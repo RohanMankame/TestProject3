@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Tenent Maintenance Management System</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Maintanence Request System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/tenents}">Tenent Requests</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+
+<div class="container">
+  <div class = "row">
+    <h1>List Tenants Maintenance Requests</h1>
+  </div>
+
+
+
+  </div>
+
+
+  <table class = "table table-striped table-bordered">
+    <thead class = "table-dark">
+    <tr>
+      <th> Tenent User</th>
+      <th> Tenent AptNum</th>
+      <th> Tenent Area</th>
+      <th> Tenent Problem</th>
+      <th> Tenent DateTime</th>
+      <th> Tenent Status</th>
+      <th> Actions </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "tenent: ${tenents}">
+      <td th:text = "${tenent.userName}"></td>
+      <td th:text = "${tenent.aptNum}"></td>
+      <td th:text = "${tenent.area}"></td>
+      <td th:text = "${tenent.problem}"></td>
+      <td th:text = "${tenent.dateTime}"></td>
+      <td th:text = "${tenent.status}"></td>
+      <td>
+        <a th:href = "@{/mainT/edit/{id}(id=${tenent.id})}"
+           class = "btn btn-primary">Complete Request</a>
+
+
+      </td>
+
+    </tr>
+    </tbody>
+
+  </table>
+
+<div>
+    <form th:action="@{/mainT}" method="get">
+      <input th:action="txtSearch" type="text" name="keyword">
+      <button type="submit">Go</button>
+    </form>
+</div>
+
+</body>
+</html>

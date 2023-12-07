@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Tenent Maintenance Management System</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Maintanence Request System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/tenents}">Tenent Requests</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h1 class = "text-center">Complete Request</h1>
+      <div class="card-body">
+        <form th:action="@{/tenents/{id}(id=${tenent.id})}" th:object ="${tenent}" method="POST">
+          <div class="form-group">
+            <label>Tenent User</label>
+            <input
+                    type="text"
+                    name="user"
+                    th:field="*{userName}"
+                    class = "form-control"
+                    placeholder="Enter username"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Tenent AptNum</label>
+            <input
+                    type="text"
+                    name="Apt"
+                    th:field="*{aptNum}"
+                    class = "form-control"
+                    placeholder="Enter Apt Num"
+            />
+
+          </div>
+
+          <div class="form-group">
+            <label>Tenent Area</label>
+            <input
+                    type="text"
+                    name="Area"
+                    th:field="*{area}"
+                    class = "form-control"
+                    placeholder="Enter problem Area"
+            />
+
+          </div>
+          <div class="form-group">
+            <label>Tenent Problem</label>
+            <input
+                    type="text"
+                    name="Problem"
+                    th:field="*{problem}"
+                    class = "form-control"
+                    placeholder="Enter problem"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Tenent DateTime</label>
+            <input
+                    type="text"
+                    name="DateTime"
+                    th:field="*{dateTime}"
+                    class = "form-control"
+                    placeholder="Enter DateTime"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Tenent Status</label>
+            <input
+                    type="text"
+                    name="Status"
+                    th:field="*{status}"
+                    class = "form-control"
+                    placeholder="Enter Status"
+            />
+          </div>
+
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
